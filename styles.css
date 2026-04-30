@@ -11,8 +11,8 @@
   --text-soft: #59677c;
   --text-inverse: #f8f4eb;
   --text-inverse-soft: #c1cad8;
-  --accent: #c97933;
-  --accent-strong: #9e5922;
+  --accent: #b86c2f;
+  --accent-strong: #7b4518;
   --accent-cool: #1f7468;
   --accent-ink: #274b7a;
   --accent-glow: rgba(201, 121, 51, 0.34);
@@ -42,7 +42,7 @@ html {
 body {
   margin: 0;
   min-width: 320px;
-  font-family: "Manrope", "Segoe UI", sans-serif;
+  font-family: Aptos, "Segoe UI Variable", "Segoe UI", Tahoma, sans-serif;
   color: var(--text);
   line-height: 1.65;
   background:
@@ -144,7 +144,6 @@ select {
   z-index: 150;
   height: 4px;
   background: rgba(19, 35, 61, 0.05);
-  transform: translateY(-100%);
 }
 
 .scroll-progress-bar {
@@ -199,7 +198,7 @@ body.is-scrolled .header-shell {
     radial-gradient(circle at 25% 20%, rgba(255, 255, 255, 0.4), transparent 35%),
     linear-gradient(145deg, #173259, #1f7468 70%, #c97933);
   color: #fff;
-  font-family: "Sora", "Trebuchet MS", sans-serif;
+  font-family: "Aptos Display", "Trebuchet MS", "Segoe UI", sans-serif;
   font-size: 0.95rem;
   font-weight: 700;
   letter-spacing: 0.12em;
@@ -347,7 +346,7 @@ body.is-scrolled .header-shell {
 .contact-panel h2,
 .intro-panel h2 {
   margin: 0;
-  font-family: "Sora", "Trebuchet MS", sans-serif;
+  font-family: "Aptos Display", "Trebuchet MS", "Segoe UI", sans-serif;
   letter-spacing: -0.04em;
   line-height: 1.08;
 }

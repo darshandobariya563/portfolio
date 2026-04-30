@@ -6,6 +6,8 @@ const revealNodes = Array.from(document.querySelectorAll("[data-reveal]"));
 const yearTarget = document.querySelector("[data-year]");
 const progressBar = document.querySelector(".scroll-progress-bar");
 const root = document.documentElement;
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const supportsPointerAura = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
 if (yearTarget) {
   yearTarget.textContent = new Date().getFullYear();
@@ -27,8 +29,14 @@ const syncScrollProgress = () => {
 
 syncHeaderState();
 syncScrollProgress();
-window.addEventListener("scroll", syncHeaderState, { passive: true });
-window.addEventListener("scroll", syncScrollProgress, { passive: true });
+window.addEventListener(
+  "scroll",
+  () => {
+    syncHeaderState();
+    syncScrollProgress();
+  },
+  { passive: true }
+);
 
 if (navToggle && siteNav) {
   navToggle.addEventListener("click", () => {
@@ -44,16 +52,45 @@ if (navToggle && siteNav) {
   });
 }
 
-revealNodes.forEach((node, index) => {
-  node.style.setProperty("transition-delay", `${Math.min(index * 45, 240)}ms`);
-});
+if (!prefersReducedMotion) {
+  revealNodes.forEach((node, index) => {
+    node.style.setProperty("transition-delay", `${Math.min(index * 45, 240)}ms`);
+  });
+}
 
-window.addEventListener("pointermove", (event) => {
-  const x = (event.clientX / window.innerWidth) * 100;
-  const y = (event.clientY / window.innerHeight) * 100;
-  root.style.setProperty("--pointer-x", `${x}%`);
-  root.style.setProperty("--pointer-y", `${y}%`);
-});
+if (!prefersReducedMotion && supportsPointerAura) {
+  let auraFrame = 0;
+  let nextX = "22%";
+  let nextY = "12%";
+
+  window.addEventListener(
+    "pointermove",
+    (event) => {
+      nextX = `${(event.clientX / window.innerWidth) * 100}%`;
+      nextY = `${(event.clientY / window.innerHeight) * 100}%`;
+
+      if (auraFrame) {
+        return;
+      }
+
+      auraFrame = window.requestAnimationFrame(() => {
+        root.style.setProperty("--pointer-x", nextX);
+        root.style.setProperty("--pointer-y", nextY);
+        auraFrame = 0;
+      });
+    },
+    { passive: true }
+  );
+}
+
+const revealInViewNodes = () => {
+  revealNodes.forEach((node) => {
+    const rect = node.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.92) {
+      node.classList.add("is-visible");
+    }
+  });
+};
 
 if ("IntersectionObserver" in window) {
   const revealObserver = new IntersectionObserver(
@@ -99,9 +136,7 @@ if ("IntersectionObserver" in window) {
 
   sections.forEach((section) => activeSectionObserver.observe(section));
 
-  window.setTimeout(() => {
-    revealNodes.forEach((node) => node.classList.add("is-visible"));
-  }, 900);
+  window.requestAnimationFrame(revealInViewNodes);
 } else {
   revealNodes.forEach((node) => node.classList.add("is-visible"));
 }
