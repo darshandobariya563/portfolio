@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://darshandobariya563.github.io/sitemap.xml
+Sitemap: https://darshandobariya.vercel.app/sitemap.xml
