@@ -93,7 +93,7 @@ To run this project locally:
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/darshandobariya563/darshandobariya563.github.io.git
+https://github.com/darshandobariya563/portfolio.git
 ```
 
 2. Open the project folder.
