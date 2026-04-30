@@ -1,0 +1,9 @@
+{
+  "name": "Darshan Dobariya Portfolio",
+  "short_name": "Darshan",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#faf6ef",
+  "theme_color": "#13233d",
+  "description": "Professional portfolio for Darshan Dobariya, a Full Stack Developer with React.js, PHP, RESTful API, responsive UI, and cybersecurity experience."
+}
