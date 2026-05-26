@@ -1,0 +1,23 @@
+{
+  "name": "darshan-dobariya-portfolio",
+  "version": "1.0.0",
+  "description": "Professional portfolio website of Darshan Dobariya showcasing full-stack development skills, internship experience, projects, certifications, and contact information.",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/darshandobariya563/portfolio.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/darshandobariya563/portfolio/issues"
+  },
+  "homepage": "https://github.com/darshandobariya563/portfolio#readme",
+  "dependencies": {
+    "@vercel/speed-insights": "^2.0.0"
+  }
+}
