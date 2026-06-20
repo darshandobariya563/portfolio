@@ -10,7 +10,7 @@
   <meta name="googlebot" content="index, follow, max-image-preview:large">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="theme-color" content="#13233d">
-  <meta name="color-scheme" content="light">
+  <meta name="color-scheme" content="light dark">
   <link rel="canonical" href="https://darshandobariya.vercel.app/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Darshan Dobariya Portfolio">
@@ -24,7 +24,12 @@
   <meta name="twitter:title" content="Darshan Dobariya | Full Stack Developer Portfolio">
   <meta name="twitter:description" content="Explore Darshan Dobariya's experience, skills, projects, certifications, and contact details in a premium one-page portfolio.">
   <meta name="twitter:image" content="https://darshandobariya.vercel.app/assets/images/og-card.svg">
-  <script>document.documentElement.classList.add("js");</script>
+  <script>
+    document.documentElement.classList.add("js");
+    const savedTheme = localStorage.getItem("portfolio-theme");
+    const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    document.documentElement.dataset.theme = savedTheme || (systemDark ? "dark" : "light");
+  </script>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="manifest" href="site.webmanifest">
   <link rel="stylesheet" href="styles.css">
@@ -132,6 +137,11 @@
           <span class="nav-toggle-text">Menu</span>
         </button>
 
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark theme">
+          <span class="theme-toggle-icon sun-icon" aria-hidden="true"></span>
+          <span class="theme-toggle-icon moon-icon" aria-hidden="true"></span>
+        </button>
+
         <nav class="site-nav" id="site-nav" aria-label="Primary">
           <a href="#about">About</a>
           <a href="#skills">Skills</a>
@@ -192,6 +202,25 @@
           </div>
 
           <div class="hero-stack">
+            <article class="system-visual surface-card" aria-label="Portfolio system design graphic" data-reveal>
+              <div class="system-visual-top">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <div class="system-orbit" aria-hidden="true">
+                <span class="orbit-node node-react">React</span>
+                <span class="orbit-node node-api">API</span>
+                <span class="orbit-node node-db">MySQL</span>
+                <span class="orbit-core">DD</span>
+              </div>
+              <div class="system-meter" aria-hidden="true">
+                <span style="--meter: 92%"></span>
+                <span style="--meter: 86%"></span>
+                <span style="--meter: 78%"></span>
+              </div>
+            </article>
+
             <article class="surface-card intro-panel" data-reveal>
               <p class="panel-label">2026 Profile Snapshot</p>
               <h2>Full Stack Developer with practical web and security internship experience.</h2>
@@ -224,8 +253,8 @@
                 <p class="stat-label">Security certifications completed</p>
               </article>
               <article class="surface-card stat-card" data-reveal>
-                <p class="stat-value">2026</p>
-                <p class="stat-label">BCA final year completed, result awaited</p>
+                <p class="stat-value">7.24</p>
+                <p class="stat-label">BCA completed with CGPA 7.24 / 10</p>
               </article>
             </div>
 
@@ -269,7 +298,7 @@
               My background blends full-stack web development and cybersecurity exposure. I enjoy building interfaces that look professional on every screen, connect cleanly with backend logic, and stay mindful of user trust, security, and maintainability.
             </p>
             <p class="section-copy">
-              I completed the final year of my Bachelor of Computer Applications at Harivandana College, Saurashtra University, with result awaited in 2026. Alongside academics, I built project work in PHP and MySQL, worked on React.js and PHP during internship delivery, and strengthened security fundamentals through hands-on internship tasks and certifications.
+              I completed my Bachelor of Computer Applications at Harivandana College, Saurashtra University, with a CGPA of 7.24 / 10. Alongside academics, I built project work in PHP and MySQL, worked on React.js and PHP during internship delivery, and strengthened security fundamentals through hands-on internship tasks and certifications.
             </p>
           </div>
 
@@ -453,7 +482,7 @@
               <h3>Bachelor of Computer Applications (BCA) | Harivandana College</h3>
               <p class="timeline-location">Saurashtra University, Rajkot</p>
               <ul class="timeline-list" role="list">
-                <li>Final year completed with result awaited in 2026.</li>
+                <li>Completed BCA with a CGPA of 7.24 / 10.</li>
                 <li>Built academic and personal web projects across frontend, backend, and database topics.</li>
               </ul>
             </article>

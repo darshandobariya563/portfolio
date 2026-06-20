@@ -5,13 +5,31 @@ const sections = Array.from(document.querySelectorAll("main section[id]"));
 const revealNodes = Array.from(document.querySelectorAll("[data-reveal]"));
 const yearTarget = document.querySelector("[data-year]");
 const progressBar = document.querySelector(".scroll-progress-bar");
+const themeToggle = document.querySelector("[data-theme-toggle]");
 const root = document.documentElement;
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const supportsPointerAura = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+const themeColor = document.querySelector('meta[name="theme-color"]');
 
 if (yearTarget) {
   yearTarget.textContent = new Date().getFullYear();
 }
+
+const syncThemeControl = () => {
+  const isDark = root.dataset.theme === "dark";
+  themeToggle?.setAttribute("aria-label", isDark ? "Switch to light theme" : "Switch to dark theme");
+  themeToggle?.setAttribute("aria-pressed", String(isDark));
+  themeColor?.setAttribute("content", isDark ? "#09111f" : "#f7fbff");
+};
+
+syncThemeControl();
+
+themeToggle?.addEventListener("click", () => {
+  const nextTheme = root.dataset.theme === "dark" ? "light" : "dark";
+  root.dataset.theme = nextTheme;
+  localStorage.setItem("portfolio-theme", nextTheme);
+  syncThemeControl();
+});
 
 const syncHeaderState = () => {
   document.body.classList.toggle("is-scrolled", window.scrollY > 16);
