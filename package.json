@@ -1,0 +1,22 @@
+{
+  "name": "darshan-dobariya-portfolio",
+  "version": "1.0.0",
+  "description": "Professional portfolio of Darshan Dobariya, a Full Stack Developer",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "npx serve .",
+    "build": "echo 'Static HTML site - no build needed'",
+    "preview": "npx serve ."
+  },
+  "keywords": [
+    "portfolio",
+    "web-developer",
+    "full-stack"
+  ],
+  "author": "Darshan Dobariya",
+  "license": "MIT",
+  "dependencies": {
+    "@vercel/speed-insights": "^2.0.0"
+  }
+}
